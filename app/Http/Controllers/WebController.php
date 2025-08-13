@@ -3,6 +3,8 @@
 // Controller
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 class WebController extends Controller
 {
     public function index()
@@ -20,10 +22,14 @@ class WebController extends Controller
         return view('contact');
     }
 
-    public function explore()
-    {
-        return view('explore');
-    }
+   public function explore()
+{
+    $users = User::where('role', 'user') // Only regular users
+               ->orderBy('last_seen', 'desc')
+               ->paginate(12);
+               
+    return view('explore', compact('users'));
+}
 
     public function profiles()
     {

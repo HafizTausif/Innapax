@@ -33,11 +33,28 @@ class User extends Authenticatable
         'birthday' => 'date',
     ];
 
+    // Relationships
     public function roles()
     {
         return $this->belongsToMany(Role::class);
     }
 
+    public function rsvps()
+    {
+        return $this->hasMany(Rsvp::class);
+    }
+
+    public function hostedEvents()
+    {
+        return $this->hasMany(Event::class, 'host_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    // Methods
     public function hasRole($role)
     {
         if (is_string($role)) {
@@ -54,5 +71,10 @@ class User extends Authenticatable
         }
 
         $this->roles()->syncWithoutDetaching($role);
+    }
+
+    public function hasRSVPed($event)
+    {
+        return $this->rsvps()->where('event_id', $event->id)->exists();
     }
 }

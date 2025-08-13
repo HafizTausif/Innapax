@@ -30,4 +30,9 @@ class PageController extends Controller
     {
         return view('contact');
     }
+
+       public function events()
+    {
+        return view('events');
+    }
 }

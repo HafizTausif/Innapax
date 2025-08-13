@@ -21,26 +21,8 @@
 
 </head>
 
-<body>
-    <!-- preloader start here -->
-    <!-- <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div> -->
-    <!-- preloader ending here -->
-
-
-    <!-- scrollToTop start here -->
-    <a href="#" class="scrollToTop"><i class="fa-solid fa-angle-up"></i></a>
-    <!-- scrollToTop ending here -->
-
-
-    <!-- ================> header section start here <================== -->
-   <header class="header header--style2" id="navbar">
+ 
+   <header class="header header--style2 fixed-top" id="navbar">
     <div class="header__top d-none d-lg-block">
         <div class="container">
             <div class="header__top--area">
@@ -87,6 +69,9 @@
                             </li>
                             <li class="{{ request()->routeIs('profiles.index') ? 'active' : '' }}">
                                 <a href="{{ route('profiles.index') }}">Matches</a>
+                            </li>
+                                <li class="{{ request()->routeIs('events') ? 'active' : '' }}">
+                                <a href="{{ route('events') }}">Events</a>
                             </li>
                             <li class="{{ request()->routeIs('services') ? 'active' : '' }}">
                                 <a href="{{ route('services') }}">Service</a>
